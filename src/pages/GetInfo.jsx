@@ -71,7 +71,11 @@ const GetInfo = () => {
     const nextId = steps[currentStepIndex + 1].id;
     if (nextId) setSelectedId(nextId);
   };
-
+  const onGoBack = () => {
+    if (completionStatus === 0) return; // no back steps
+    const backId = steps[currentStepIndex - 1].id;
+    if (backId) setSelectedId(backId);
+  };
   const goto = (id) => setSelectedId(id);
 
   const onComplete = () => {
@@ -150,6 +154,7 @@ const GetInfo = () => {
             goto={goto}
             defaultState={info}
             onComplete={onComplete}
+            onGoBack={onGoBack}
           />
         </PanelContent>
       )}

@@ -7,7 +7,7 @@ import { DoubleSwitch } from "../ui/DoubleSwitch";
 import { getClass } from "@/lib/getClass";
 import { useState } from "react";
 
-const SelectPlan = ({ defaultState, updateInfo }) => {
+const SelectPlan = ({ defaultState, updateInfo, onGoBack }) => {
   const [plan, setPlan] = useState(defaultState.plan ?? {});
 
   const updateDuration = (isYearly) => {
@@ -91,6 +91,7 @@ const SelectPlan = ({ defaultState, updateInfo }) => {
 
       <PanelNavigation
         panelCompletionStatus={0.2}
+        onGoBack={onGoBack}
         onNext={() => {
           updateInfo(plan);
         }}

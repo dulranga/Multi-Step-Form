@@ -4,7 +4,7 @@ import { addons as allAddons } from "./Addon";
 import { plans } from "./SelectPlan";
 import { PanelNavigation } from "../section";
 
-const Summary = ({ defaultState, goto, onComplete }) => {
+const Summary = ({ defaultState, goto, onComplete, onGoBack }) => {
   const plan = plans.find((plan) => plan.id === defaultState.plan?.id);
   console.log(plan);
   const selectedAddons = allAddons.filter((addon) =>
@@ -80,7 +80,11 @@ const Summary = ({ defaultState, goto, onComplete }) => {
         </p>
       </div>
 
-      <PanelNavigation panelCompletionStatus={1} onComplete={onComplete} />
+      <PanelNavigation
+        panelCompletionStatus={1}
+        onGoBack={onGoBack}
+        onComplete={onComplete}
+      />
     </div>
   );
 };

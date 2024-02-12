@@ -21,10 +21,10 @@ export function PanelNavigation({
   onComplete,
 }) {
   return (
-    <div className="fixed sm:absolute bottom-0 left-0 py-5 px-10 bg-white w-full flex justify-between align-middle">
-      {panelCompletionStatus > 0 && (
-        <Button onClick={onGoBack} tabIndex="2" variant="ghost">
-          Go Back
+    <div className="fixed sm:absolute bottom-0 left-0 py-5 px-10 bg-white w-full flex justify-between align-middle flex-row-reverse">
+      {panelCompletionStatus === 1 && (
+        <Button className="bg-primary-400" onClick={onComplete} tabIndex="1">
+          Confirm
         </Button>
       )}
       {panelCompletionStatus < 1 && (
@@ -32,9 +32,9 @@ export function PanelNavigation({
           Next Step
         </Button>
       )}
-      {panelCompletionStatus === 1 && (
-        <Button className="bg-primary-400" onClick={onComplete} tabIndex="1">
-          Confirm
+      {panelCompletionStatus > 0 && (
+        <Button onClick={onGoBack} tabIndex="2" variant="ghost">
+          Go Back
         </Button>
       )}
     </div>

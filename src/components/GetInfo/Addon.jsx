@@ -3,7 +3,7 @@ import { PanelNavigation } from "../section";
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
 
-const Addon = ({ defaultState, updateInfo }) => {
+const Addon = ({ defaultState, updateInfo, onGoBack }) => {
   const selectedAddons = useRef(new Set(defaultState.addon ?? []));
   return (
     <div>
@@ -46,6 +46,7 @@ const Addon = ({ defaultState, updateInfo }) => {
       </ul>
       <PanelNavigation
         panelCompletionStatus={0.4}
+        onGoBack={onGoBack}
         onNext={() => {
           updateInfo(selectedAddons.current);
         }}
