@@ -33,8 +33,8 @@ export function PanelNavigation({
         </Button>
       )}
       {panelCompletionStatus === 1 && (
-        <Button onClick={onComplete} tabIndex="1">
-          Complete
+        <Button className="bg-primary-400" onClick={onComplete} tabIndex="1">
+          Confirm
         </Button>
       )}
     </div>

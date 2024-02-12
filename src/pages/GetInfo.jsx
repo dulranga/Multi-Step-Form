@@ -1,7 +1,9 @@
 import desktop from "@/assets/images/bg-sidebar-desktop.svg";
 import mobile from "@/assets/images/bg-sidebar-mobile.svg";
+import Addon from "@/components/GetInfo/Addon";
 import PersonalInfo from "@/components/GetInfo/Personal";
 import SelectPlan from "@/components/GetInfo/SelectPlan";
+import Summary from "@/components/GetInfo/Summary";
 import PanelContent from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { getClass } from "@/lib/getClass";
@@ -25,22 +27,22 @@ const steps = [
   },
   {
     stepName: "ADD-ONS",
-    title: "Personal info",
-    description: "Please provide your name, email address, and phone number.",
-    content: () => null,
+    title: "Pick add-ons",
+    description: "Add-ons help enhance your gaming experience.",
+    content: Addon,
     id: "addon",
   },
   {
     stepName: "SUMMARY",
-    title: "Personal info",
-    description: "Please provide your name, email address, and phone number.",
-    content: () => null,
+    title: "Finishing up",
+    description: "Double-check everything looks OK before confirming.",
+    content: Summary,
     id: "summary",
   },
 ];
 
 const GetInfo = () => {
-  const [selectedId, setSelectedId] = useState("plan");
+  const [selectedId, setSelectedId] = useState("addon");
   const [info, setInfo] = useState({});
 
   const currentStep = useMemo(() => {
@@ -67,6 +69,7 @@ const GetInfo = () => {
     if (nextId) setSelectedId(nextId);
   };
 
+  const goto = (id) => setSelectedId(id);
   return (
     <div className="font-body sm:flex sm:w-full sm:gap-10 sm:bg-white sm:p-5 sm:rounded-2xl sm:max-w-5xl">
       <nav className="z-0 fixed sm:relative   top-0 inset-x-0 isolate flex justify-center sm:justify-between items-center sm:items-start w-full sm:max-w-xs">
@@ -116,6 +119,7 @@ const GetInfo = () => {
       >
         <CurrentStepContent
           updateInfo={updateInfo(currentStep.id)}
+          goto={goto}
           defaultState={info}
         />
       </PanelContent>
